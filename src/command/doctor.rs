@@ -2,12 +2,11 @@ use crate::{
     command::*,
     result::Result,
 };
-use std::time::{Duration, Instant};
+use std::time::Duration;
 use std::thread;
-use rand::Rng;
-use bollard::{Docker, system::Version};
+use bollard::Docker;
 use console::{Emoji, style};
-use indicatif::{HumanDuration, MultiProgress, ProgressBar, ProgressStyle};
+use indicatif::{ProgressBar, ProgressStyle};
 
 static LOOKING_GLASS: Emoji<'_, '_> = Emoji("🔍 ", "");
 static SUCCESS: Emoji<'_, '_> = Emoji("✅ ", "");
