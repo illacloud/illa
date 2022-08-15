@@ -12,6 +12,8 @@ use indicatif::{HumanDuration, MultiProgress, ProgressBar, ProgressStyle};
 static LOOKING_GLASS: Emoji<'_, '_> = Emoji("🔍 ", "");
 static SUCCESS: Emoji<'_, '_> = Emoji("✅ ", "");
 static FAIL: Emoji<'_, '_> = Emoji("❌ ", "");
+static SPARKLE: Emoji<'_, '_> = Emoji("✨ ", ":-)");
+static WARN: Emoji<'_, '_> = Emoji("❗️ ", "");
 
 // Executes the `illa doctor` command to 
 // check the prerequisites of self hosting
@@ -23,13 +25,14 @@ pub struct Cmd {
 
 impl Cmd {
     pub async fn run(&self) -> Result {
-        let spinner_style = ProgressStyle::with_template("{spinner:.green} {msg}")
+        let spinner_style = ProgressStyle::with_template("{spinner:.green} {wide_msg}")
             .unwrap()
             .tick_strings(&[
-                "▹▹▹",
-                "▸▹▹",
-                "▹▸▹",
-                "▹▹▸",
+                "🔸 ",
+                "🔶 ",
+                "🟠 ",
+                "🟠 ",
+                "🔶 "
             ]);
         
         println!(
@@ -43,7 +46,7 @@ impl Cmd {
         for _ in 0..10 {
             pb.set_message(format!("{}", String::from("Checking the version of Docker...")));
             pb.inc(1);
-            thread::sleep(Duration::from_millis(100));
+            thread::sleep(Duration::from_millis(200));
         }
 
         let new_spinner_style = ProgressStyle::with_template("{wide_msg}")
@@ -52,18 +55,22 @@ impl Cmd {
         let _docker = Docker::connect_with_local_defaults().unwrap();
         match _docker.version().await {
             Ok(version) =>  pb.finish_with_message(format!(
-                "{} {}: {}\n{}",
+                "{} {}: {}\n{} {}",
                 SUCCESS,
                 String::from("Docker version"),
                 version.version.unwrap(),
-                String::from("123"),
+                SPARKLE,
+                style("Success! The minimum requirement for deploying ILLA has been satisfied. Self-Host your ILLA by command [illa deploy].").green(),
             )),
             Err(e) => pb.finish_with_message(format!(
-                "{} {}",
+                "{} {}\n{} {}",
                 FAIL,
                 String::from("No docker exist"),
+                WARN,
+                style("Please install docker.").red(),
             ))
         }
+        println!();
         Ok(())
     }
 }
