@@ -1,0 +1,13 @@
+[package]
+name = "illa"
+version = "0.1.0"
+edition = "2021"
+
+[dependencies]
+anyhow = "1.0"
+rand = "0.8"
+bollard = "0.13"
+indicatif = "0.17"
+console = { version = "0.15", default-features = false, features = ["ansi-parsing"] }
+tokio = {version = "1.20", features = ["full"]}
+clap = {version = "3.2.17", features = ["derive"]}
