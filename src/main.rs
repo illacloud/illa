@@ -6,25 +6,22 @@ use illa::{
     result::Result,
 };
 use std::process;
-use structopt::StructOpt;
+use clap::{Parser, Subcommand};
 
-#[derive(Debug, StructOpt)]
-pub struct Cli {
-    #[structopt(flatten)]
-    cmd: Cmd,
-
-    #[structopt(flatten)]
-    opts: Opts,
+#[derive(Debug, Parser)]
+struct Cli {
+    #[clap(subcommand)]
+    cmd: Cmds,
 }
 
-#[derive(Debug, StructOpt)]
-pub enum Cmd {
+#[derive(Debug, Subcommand)]
+enum Cmds {
     Doctor(doctor::Cmd),
 }
 
 #[tokio::main]
 async fn main() {
-    let cli = Cli::from_args();
+    let cli = Cli::parse();
     if let Err(e) = run(cli).await {
         eprintln!("error: {:?}", e);
         process::exit(1);
@@ -33,6 +30,6 @@ async fn main() {
 
 async fn run(cli: Cli) -> Result {
     match cli.cmd {
-        Cmd::Doctor(cmd) => cmd.run().await,
+        Cmds::Doctor(cmd) => cmd.run().await,
     }
 }

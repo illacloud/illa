@@ -7,6 +7,7 @@ use std::thread;
 use bollard::Docker;
 use console::{Emoji, style};
 use indicatif::{ProgressBar, ProgressStyle};
+use clap::Args;
 
 static LOOKING_GLASS: Emoji<'_, '_> = Emoji("🔍 ", "");
 static SUCCESS: Emoji<'_, '_> = Emoji("✅ ", "");
@@ -16,7 +17,7 @@ static WARN: Emoji<'_, '_> = Emoji("❗️ ", "");
 
 // Executes the `illa doctor` command to 
 // check the prerequisites of self hosting
-#[derive(Debug, StructOpt)]
+#[derive(Debug, Args)]
 /// Checks the prerequisites of self-host
 pub struct Cmd {
 
