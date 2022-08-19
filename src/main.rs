@@ -1,14 +1,15 @@
 #![allow(unused)]
+use clap::{Parser, Subcommand};
 use illa::{
-    command::{
-        doctor, Opts,
-    },
+    command::{deploy, doctor},
     result::Result,
 };
 use std::process;
-use clap::{Parser, Subcommand};
 
 #[derive(Debug, Parser)]
+#[clap(name = "illa")]
+#[clap(version)]
+/// Deploy a modern low-code platform in 5 Seconds!
 struct Cli {
     #[clap(subcommand)]
     cmd: Cmds,
@@ -17,6 +18,7 @@ struct Cli {
 #[derive(Debug, Subcommand)]
 enum Cmds {
     Doctor(doctor::Cmd),
+    Deploy(deploy::Cmd),
 }
 
 #[tokio::main]
@@ -31,5 +33,6 @@ async fn main() {
 async fn run(cli: Cli) -> Result {
     match cli.cmd {
         Cmds::Doctor(cmd) => cmd.run().await,
+        Cmds::Deploy(cmd) => cmd.run().await,
     }
 }
