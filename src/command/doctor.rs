@@ -27,10 +27,7 @@ impl Cmd {
         pb.set_style(spinner_style.clone());
 
         for _ in 0..10 {
-            pb.set_message(format!(
-                "{}",
-                String::from("Checking the version of Docker...")
-            ));
+            pb.set_message("Checking the version of Docker...");
             pb.inc(1);
             thread::sleep(Duration::from_millis(200));
         }
