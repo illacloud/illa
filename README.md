@@ -5,7 +5,7 @@
 
 <h1 align="center">ILLA</h1>
 
-<p align="center">Help developers build Business Tools more efficiently.</p>
+<p align="center">Accelerate your internal tools development.</p>
 
 <div align="center">
   <p>Create with ❤︎ by <a href="https://github.com/illa-family/illa/graphs/contributors">contributors</a></p>
