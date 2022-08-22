@@ -5,7 +5,7 @@
 
 <h1 align="center">ILLA</h1>
 
-<p align="center">Help developers build Business Tools more efficiently.</p>
+<p align="center">Accelerate your internal tools development.</p>
 
 <div align="center">
   <p>Create with ❤︎ by <a href="https://github.com/illa-family/illa/graphs/contributors">contributors</a></p>
@@ -13,7 +13,7 @@
 
 [![Chat on Discord](https://img.shields.io/badge/chat-Discord-7289DA?logo=discord)](https://discord.gg/2tGBuJkgd6)
 [![Discuss on GitHub](https://img.shields.io/badge/discussions-GitHub-333333?logo=github)](https://github.com/orgs/illa-family/discussions)
-[![license](https://badgen.net/gitlab/license/gitlab-org/omnibus-gitlab)](./LICENSE)
+[![license](https://img.shields.io/github/license/illa-family/illa)](./LICENSE)
 [![contributing](https://badgen.net/badge/PRs/Welcome/green?icon=storybook)](./CONTRIBUTING.md)
 
 ## ✨ What is ILLA
