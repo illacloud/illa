@@ -2,10 +2,12 @@ use crate::{command::*, result::Result};
 use anyhow::Ok;
 use bollard::{image::CreateImageOptions, service::CreateImageInfo, Docker};
 use clap::{ArgAction::SetTrue, ArgGroup, Args};
+use console::style;
 use futures_util::{StreamExt, TryStreamExt};
 use indicatif::{ProgressBar, ProgressStyle};
 use std::collections::HashMap;
 use std::fmt::format;
+use std::process;
 use std::thread;
 use std::time::Duration;
 
@@ -62,6 +64,18 @@ async fn deploy_self_host(
     progress_style: ProgressStyle,
 ) -> Result {
     println!("{} Running a self-hosted installation...", ui::emoji::BUILD);
+
+    let _docker = Docker::connect_with_local_defaults().unwrap();
+    if (_docker.ping().await).is_err() {
+        println!(
+            "{} {}\n{} {}",
+            ui::emoji::FAIL,
+            String::from("No running docker found."),
+            ui::emoji::WARN,
+            style("Please check the status of docker.").red(),
+        );
+        process::exit(0);
+    }
 
     Ok(())
 }
