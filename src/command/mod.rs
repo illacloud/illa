@@ -1,8 +1,4 @@
 #![allow(unused)]
+pub mod deploy;
 pub mod doctor;
-pub use clap::StructOpt;
-
-#[derive(Debug, StructOpt)]
-pub struct Opts {
-    
-}
+pub mod ui;
