@@ -1,7 +1,9 @@
 on:
   pull_request:
   push:
-    branches: master
+    branches:
+      - main
+      - develop
 
 name: Continuous Integration
 
@@ -9,7 +11,6 @@ jobs:
   check:
     name: Check
     runs-on: ubuntu-latest
-    needs: prepare
     steps:
       - uses: actions/checkout@master
       - uses: actions-rs/toolchain@v1
@@ -24,7 +25,6 @@ jobs:
   test:
     name: Test Suite
     runs-on: ubuntu-latest
-    needs: prepare
     steps:
       - uses: actions/checkout@master
       - uses: actions-rs/toolchain@v1
@@ -42,7 +42,6 @@ jobs:
   fmt:
     name: Rustfmt
     runs-on: ubuntu-latest
-    needs: prepare
     steps:
       - uses: actions/checkout@master
       - uses: actions-rs/toolchain@v1
@@ -60,7 +59,6 @@ jobs:
   clippy:
     name: Clippy
     runs-on: ubuntu-latest
-    needs: prepare
     steps:
       - uses: actions/checkout@master
       - uses: actions-rs/toolchain@v1
