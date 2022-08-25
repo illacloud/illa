@@ -1,7 +1,17 @@
 use crate::{command::*, result::Result};
 use anyhow::Ok;
+use bollard::{image::CreateImageOptions, service::CreateImageInfo, Docker};
 use clap::{ArgAction::SetTrue, ArgGroup, Args};
+use console::style;
+use futures_util::{StreamExt, TryStreamExt};
 use indicatif::{ProgressBar, ProgressStyle};
+use std::collections::HashMap;
+use std::fmt::format;
+use std::process;
+use std::thread;
+use std::time::Duration;
+
+const ILLA_BUILDER_IMAGE: &str = "appsmith/appsmith-editor:latest";
 
 // Executes the `illa deploy` command to
 // deploy your ILLA Builder
@@ -38,20 +48,40 @@ impl Cmd {
 
         let (self_host, cloud) = (self.self_host, self.cloud);
         match (self_host, cloud) {
-            (true, _) => deploy_self_host(self.builder_version.as_ref(), self.port, spinner_style),
-            (_, true) => deploy_cloud(spinner_style),
+            (true, _) => deploy_self_host(self.builder_version.as_ref(), self.port, spinner_style)
+                .await
+                .unwrap(),
+            (_, true) => deploy_cloud(spinner_style).await.unwrap(),
             _ => unreachable!(),
         };
         Ok(())
     }
 }
 
-fn deploy_self_host(version: Option<&String>, port: u16, progress_style: ProgressStyle) -> Result {
+async fn deploy_self_host(
+    version: Option<&String>,
+    port: u16,
+    progress_style: ProgressStyle,
+) -> Result {
     println!("{} Running a self-hosted installation...", ui::emoji::BUILD);
+
+    let _docker = Docker::connect_with_local_defaults().unwrap();
+    if (_docker.ping().await).is_err() {
+        println!(
+            "{} {}\n{} {}",
+            ui::emoji::FAIL,
+            String::from("No running docker found."),
+            ui::emoji::WARN,
+            style("Please check the status of docker.").red(),
+        );
+        process::exit(0);
+    }
+
     Ok(())
 }
 
-fn deploy_cloud(progress_style: ProgressStyle) -> Result {
-    println!("{} Looking forward to onboarding you!", ui::emoji::CLOCK);
+async fn deploy_cloud(progress_style: ProgressStyle) -> Result {
+    println!("{} Looking forward to onboarding you!", ui::emoji::DIAMOND);
+
     Ok(())
 }

@@ -47,9 +47,9 @@ impl Cmd {
             Err(e) => pb.finish_with_message(format!(
                 "{} {}\n{} {}",
                 ui::emoji::FAIL,
-                String::from("No docker exist"),
+                String::from("No running docker found."),
                 ui::emoji::WARN,
-                style("Please install docker.").red(),
+                style("Please check the status of docker.").red(),
             ))
         }
         println!();
