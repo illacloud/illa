@@ -13,7 +13,7 @@ use std::process;
 use std::thread;
 use std::time::{Duration, Instant};
 
-const ILLA_BUILDER_IMAGE: &str = "appsmith/appsmith-editor";
+const ILLA_BUILDER_IMAGE: &str = "illasoft/illa-builder";
 const ILLA_BUILDER_VERSION: &str = "latest";
 
 // Executes the `illa deploy` command to
