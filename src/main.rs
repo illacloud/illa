@@ -1,7 +1,7 @@
 #![allow(unused)]
 use clap::{Parser, Subcommand};
 use illa::{
-    command::{deploy, doctor},
+    command::{deploy, doctor, list},
     result::Result,
 };
 use std::process;
@@ -19,6 +19,7 @@ struct Cli {
 enum Cmds {
     Doctor(doctor::Cmd),
     Deploy(deploy::Cmd),
+    List(list::Cmd),
 }
 
 #[tokio::main]
@@ -34,5 +35,6 @@ async fn run(cli: Cli) -> Result {
     match cli.cmd {
         Cmds::Doctor(cmd) => cmd.run().await,
         Cmds::Deploy(cmd) => cmd.run().await,
+        Cmds::List(cmd) => cmd.run().await,
     }
 }
