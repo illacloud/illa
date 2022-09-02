@@ -12,3 +12,4 @@ futures-util = "0.3.23"
 console = { version = "0.15", default-features = false, features = ["ansi-parsing"] }
 tokio = {version = "1.20", features = ["full"]}
 clap = {version = "3.2.17", features = ["derive"]}
+uuid = {version = "1.1.2", features = ["v4"]}
