@@ -5,7 +5,6 @@ use bollard::image::CreateImageOptions;
 use bollard::models::HostConfig;
 use bollard::service::PortBinding;
 use bollard::{service::CreateImageInfo, Docker};
-use clap::builder;
 use clap::{ArgAction::SetTrue, ArgGroup, Args};
 use console::style;
 use futures_util::{StreamExt, TryStreamExt};
