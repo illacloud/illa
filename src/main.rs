@@ -1,7 +1,7 @@
 #![allow(unused)]
 use clap::{Parser, Subcommand};
 use illa::{
-    command::{deploy, doctor, list, update},
+    command::{deploy, doctor, list, remove, restart, stop, update},
     result::Result,
 };
 use std::process;
@@ -21,6 +21,9 @@ enum Cmds {
     Deploy(deploy::Cmd),
     List(list::Cmd),
     Update(update::Cmd),
+    Stop(stop::Cmd),
+    Restart(restart::Cmd),
+    Remove(remove::Cmd),
 }
 
 #[tokio::main]
@@ -38,5 +41,8 @@ async fn run(cli: Cli) -> Result {
         Cmds::Deploy(cmd) => cmd.run().await,
         Cmds::List(cmd) => cmd.run().await,
         Cmds::Update(cmd) => cmd.run().await,
+        Cmds::Stop(cmd) => cmd.run().await,
+        Cmds::Restart(cmd) => cmd.run().await,
+        Cmds::Remove(cmd) => cmd.run().await,
     }
 }
