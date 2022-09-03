@@ -1,7 +1,22 @@
 [package]
 name = "illa"
-version = "0.1.0"
+version = "1.0.0"
+authors = ["ILLA <opensource@illasoft.com>"]
 edition = "2021"
+
+description = "Deploy a modern low-code platform in 5 Seconds!"
+readme = "README.md"
+keywords = ["Command Line Interface", "low-code", "deployment"]
+
+homepage = "https://www.illacloud.com/docs/illa-cli"
+repository = "https://github.com/illa-family/illa"
+
+license = "Apache-2.0"
+
+[[bin]]
+name = "illa"
+path = "src/main.rs"
+doc = false
 
 [dependencies]
 anyhow = "1.0"
@@ -12,3 +27,5 @@ futures-util = "0.3.23"
 console = { version = "0.15", default-features = false, features = ["ansi-parsing"] }
 tokio = {version = "1.20", features = ["full"]}
 clap = {version = "3.2.17", features = ["derive"]}
+uuid = {version = "1.1.2", features = ["v4"]}
+prettytable-rs = "0.9"
