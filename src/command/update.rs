@@ -3,14 +3,14 @@ use anyhow::Ok;
 use clap::{ArgAction::SetTrue, ArgGroup, Args};
 
 // Executes the `illa update` command to
-// update the ILLA Builder with the latest docker images
+// update the ILLA Builder with the latest docker image
 #[derive(Debug, Args)]
 #[clap(group(
     ArgGroup::new("update")
         .required(true)
         .args(&["self-host", "cloud"]),
 ))]
-/// List ILLA Builder
+/// Update ILLA Builder
 pub struct Cmd {
     /// Update Self-hosted ILLA Builder
     #[clap(short = 'S', long = "self", action = SetTrue)]
