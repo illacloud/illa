@@ -17,13 +17,13 @@ struct Cli {
 
 #[derive(Debug, Subcommand)]
 enum Cmds {
+    List(list::Cmd),
+    Stop(stop::Cmd),
     Doctor(doctor::Cmd),
     Deploy(deploy::Cmd),
-    List(list::Cmd),
-    Update(update::Cmd),
-    Stop(stop::Cmd),
-    Restart(restart::Cmd),
     Remove(remove::Cmd),
+    Update(update::Cmd),
+    Restart(restart::Cmd),
 }
 
 #[tokio::main]
@@ -37,12 +37,12 @@ async fn main() {
 
 async fn run(cli: Cli) -> Result {
     match cli.cmd {
+        Cmds::List(cmd) => cmd.run().await,
+        Cmds::Stop(cmd) => cmd.run().await,
         Cmds::Doctor(cmd) => cmd.run().await,
         Cmds::Deploy(cmd) => cmd.run().await,
-        Cmds::List(cmd) => cmd.run().await,
-        Cmds::Update(cmd) => cmd.run().await,
-        Cmds::Stop(cmd) => cmd.run().await,
-        Cmds::Restart(cmd) => cmd.run().await,
         Cmds::Remove(cmd) => cmd.run().await,
+        Cmds::Update(cmd) => cmd.run().await,
+        Cmds::Restart(cmd) => cmd.run().await,
     }
 }
