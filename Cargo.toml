@@ -1,7 +1,22 @@
 [package]
 name = "illa"
 version = "0.1.0"
+authors = ["ILLA <opensource@illasoft.com>"]
 edition = "2021"
+
+description = "Deploy a modern low-code platform in 5 Seconds!"
+readme = "README.md"
+keywords = ["Command Line Interface", "low-code", "deployment"]
+
+homepage = "https://www.illacloud.com/docs/illa-cli"
+repository = "https://github.com/illa-family/illa"
+
+license = "Apache-2.0"
+
+[[bin]]
+name = "illa"
+path = "src/main.rs"
+doc = false
 
 [dependencies]
 anyhow = "1.0"
