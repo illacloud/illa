@@ -6,7 +6,7 @@ edition = "2021"
 
 description = "Deploy a modern low-code platform in 5 Seconds!"
 readme = "README.md"
-keywords = ["Command Line Interface", "low-code", "deployment"]
+keywords = ["terminal-app", "low-code", "deployment"]
 
 homepage = "https://www.illacloud.com/docs/illa-cli"
 repository = "https://github.com/illa-family/illa"
