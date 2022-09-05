@@ -25,7 +25,7 @@ ILLA is a CLI tool for **hosting ILLA Builder at cloud or local**.
 ## 🖥 Fast Try
 
 ```bash
-$ building
+$ cargo install illa
 ```
 
 ## 💬 Community
@@ -44,6 +44,10 @@ Join ILLA Community to share your ideas, suggestions or questions and connect wi
 
 Thinking about contributing? All kinds of contributions to ILLA are greatly appreciated and welcomed! Check
 out [Contributing Guide](./CONTRIBUTING.md) for details about how you can get involved.
+
+## 📖 Learn more
+
+Please visit [ILLA CLI doc](https://www.illa.cloud/docs/illa-cli)
 
 ## 🔥 We're Hiring
 
