@@ -41,7 +41,7 @@ jobs:
       - name: Name Release
         if: startsWith(github.ref, 'refs/tags/')
         id: name_release
-        run: echo ::set-output name=RELEASE::illa-${GITHUB_REF/refs\/tags\//}-x86-64-linux
+        run: echo ::set-output name=RELEASE::illa-x86_64-linux
 
       - name: Prepare Release
         if: startsWith(github.ref, 'refs/tags/')
@@ -87,7 +87,7 @@ jobs:
       - name: Name Release
         if: startsWith(github.ref, 'refs/tags/')
         id: name_release
-        run: echo ::set-output name=RELEASE::illa-${GITHUB_REF/refs\/tags\//}-x86-64-macos
+        run: echo ::set-output name=RELEASE::illa-x86_64-macos
 
       - name: Prepare Release
         if: startsWith(github.ref, 'refs/tags/')
@@ -147,7 +147,7 @@ jobs:
       - name: Name Release
         if: startsWith(github.ref, 'refs/tags/')
         id: name_release
-        run: echo ::set-output name=RELEASE::illa-${GITHUB_REF/refs\/tags\//}-x86-64-win
+        run: echo ::set-output name=RELEASE::illa-x86_64-win
         shell: bash
 
       - name: Prepare Release
