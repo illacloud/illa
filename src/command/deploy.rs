@@ -45,6 +45,15 @@ pub struct Cmd {
     /// The port on which you want ILLA Builder to run
     #[clap(short = 'p', long = "port", default_value = "80")]
     port: u16,
+
+    /// The server address where you want to deploy
+    #[clap(
+        short = 's',
+        long = "server-addr",
+        default_value = "localhost",
+        value_name = "SERVER_ADDRESS"
+    )]
+    server_address: String,
 }
 
 impl Cmd {
@@ -56,7 +65,13 @@ impl Cmd {
         let (self_host, cloud) = (self.self_host, self.cloud);
         match (self_host, cloud) {
             (true, _) => {
-                deploy_self_host(self.builder_version.as_ref(), self.port, spinner_style).await?
+                deploy_self_host(
+                    self.builder_version.as_ref(),
+                    self.port,
+                    self.server_address.clone(),
+                    spinner_style,
+                )
+                .await?
             }
             (_, true) => deploy_cloud(spinner_style).await?,
             _ => unreachable!(),
@@ -68,6 +83,7 @@ impl Cmd {
 async fn deploy_self_host(
     version: Option<&String>,
     port: u16,
+    server_addr: String,
     progress_style: ProgressStyle,
 ) -> Result {
     println!("{} Running a self-hosted installation...", ui::emoji::BUILD);
@@ -132,6 +148,7 @@ async fn deploy_self_host(
     let builder_env = vec![
         "GIN_MODE=release".to_string(),
         format!("POSTGRES_PASSWORD={}", pg_pwd),
+        format!("SERVER_ADDRESS={}", server_addr),
     ];
     let mut builder_labels = HashMap::new();
     builder_labels.insert(
