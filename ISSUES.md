@@ -8,7 +8,7 @@ Whether you are trying to report a bug or propose a feature request, [Github iss
 
 The `bug report` and `feature request` issue template are ready for you!
 
-## The lifecycle of an issue
+## The issue life-cycle
 
 1. User files an issue.
 2. The member of `illa family` provides feedback as soon as possible.
