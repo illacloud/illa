@@ -22,17 +22,13 @@ pub struct Cmd {
     /// Stop ILLA Builder on ILLA Cloud
     #[clap(short = 'C', long = "cloud", action = SetTrue)]
     cloud: bool,
-
-    /// The ILLA Builder will stop
-    #[clap(short = 'i', long = "id", value_parser, requires = "stop")]
-    id: String,
 }
 
 impl Cmd {
     pub async fn run(&self) -> Result {
         let (self_host, cloud) = (self.self_host, self.cloud);
         match (self_host, cloud) {
-            (true, _) => stop_local(self.id.clone()).await?,
+            (true, _) => stop_local().await?,
             (_, true) => println!("{} Looking forward to onboarding you!", ui::emoji::DIAMOND),
             _ => unreachable!(),
         };
@@ -40,7 +36,7 @@ impl Cmd {
     }
 }
 
-async fn stop_local(id: String) -> Result {
+async fn stop_local() -> Result {
     println!("{} Trying to stop the ILLA Builder...", ui::emoji::BUILD);
 
     let _docker = Docker::connect_with_local_defaults().unwrap();

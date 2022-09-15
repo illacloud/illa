@@ -23,10 +23,6 @@ pub struct Cmd {
     #[clap(short = 'C', long = "cloud", action = SetTrue)]
     cloud: bool,
 
-    /// The ILLA Builder will be removed
-    #[clap(short = 'i', long = "id", value_parser, requires = "remove")]
-    id: String,
-
     /// If the ILLA Builder is running, kill it before removing it
     #[clap(short = 'f', long = "force", action = SetTrue)]
     force: bool,
@@ -36,7 +32,7 @@ impl Cmd {
     pub async fn run(&self) -> Result {
         let (self_host, cloud) = (self.self_host, self.cloud);
         match (self_host, cloud) {
-            (true, _) => remove_local(self.id.clone(), self.force).await?,
+            (true, _) => remove_local(self.force).await?,
             (_, true) => println!("{} Looking forward to onboarding you!", ui::emoji::DIAMOND),
             _ => unreachable!(),
         };
@@ -44,7 +40,7 @@ impl Cmd {
     }
 }
 
-async fn remove_local(id: String, is_force: bool) -> Result {
+async fn remove_local(is_force: bool) -> Result {
     println!("{} Trying to remove the ILLA Builder...", ui::emoji::BUILD);
 
     let _docker = Docker::connect_with_local_defaults().unwrap();
