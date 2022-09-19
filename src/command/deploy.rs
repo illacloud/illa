@@ -2,7 +2,7 @@ use crate::{command::*, result::Result};
 use anyhow::Ok;
 use bollard::container::{Config, CreateContainerOptions, LogsOptions, StartContainerOptions};
 use bollard::image::CreateImageOptions;
-use bollard::models::HostConfig;
+use bollard::models::{HostConfig, Mount, MountTypeEnum};
 use bollard::service::PortBinding;
 use bollard::{service::CreateImageInfo, Docker};
 use clap::{ArgAction::SetTrue, ArgGroup, Args};
@@ -185,6 +185,14 @@ async fn deploy_self_host(
             host_ip: Some("0.0.0.0".to_string()),
         }]),
     );
+    utils::local_bind_init();
+    let mounts = vec![Mount {
+        target: Some("/var/lib/postgresql/data".to_string()),
+        source: Some("/tmp/illa-data".to_string()),
+        typ: Some(MountTypeEnum::BIND),
+        read_only: Some(false),
+        ..Default::default()
+    }];
 
     let builder_config = Config {
         image: Some(builder_image),
@@ -192,11 +200,7 @@ async fn deploy_self_host(
         labels: Some(builder_labels),
         host_config: Some(HostConfig {
             port_bindings: Some(builder_port_bindings),
-            // TODO: based on different operating system to bind host path and volume
-            // binds: Some(vec![format!(
-            //     "{}:{}",
-            //     "/tmp/illa-data", "/var/lib/postgresql/data"
-            // )]),
+            mounts: Some(mounts),
             ..Default::default()
         }),
         ..Default::default()
