@@ -6,7 +6,7 @@ use bollard::{
         RemoveContainerOptions, StartContainerOptions, StatsOptions,
     },
     image::CreateImageOptions,
-    models::HostConfig,
+    models::{HostConfig, Mount, MountTypeEnum},
     Docker,
 };
 use clap::{builder, ArgAction::SetTrue, ArgGroup, Args};
@@ -101,6 +101,14 @@ async fn update_local(progress_style: ProgressStyle) -> Result {
         builder_env_cp[1].as_str(),
         builder_env_cp[2].as_str(),
     ];
+    utils::local_bind_init();
+    let mounts = vec![Mount {
+        target: Some("/var/lib/postgresql/data".to_string()),
+        source: Some("/tmp/illa-data".to_string()),
+        typ: Some(MountTypeEnum::BIND),
+        read_only: Some(false),
+        ..Default::default()
+    }];
     let mut builder_labels = HashMap::new();
     builder_labels.insert("maintainer", "opensource@illasoft.com");
     builder_labels.insert("license", "Apache-2.0");
@@ -189,11 +197,7 @@ async fn update_local(progress_style: ProgressStyle) -> Result {
         labels: Some(builder_labels),
         host_config: Some(HostConfig {
             port_bindings: builder_port_bindings.clone(),
-            // TODO: based on different operating system to bind host path and volume
-            // binds: Some(vec![format!(
-            //     "{}:{}",
-            //     "/tmp/illa-data", "/var/lib/postgresql/data"
-            // )]),
+            mounts: Some(mounts),
             ..Default::default()
         }),
         ..Default::default()

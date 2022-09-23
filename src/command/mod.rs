@@ -7,3 +7,4 @@ pub mod restart;
 pub mod stop;
 pub mod ui;
 pub mod update;
+pub mod utils;
