@@ -15,15 +15,20 @@ pub fn local_bind_init() -> Result {
 
 #[cfg(target_os = "windows")]
 pub fn local_bind_init() -> Result {
+    fs::create_dir_all("/tmp/illa-data");
+
     Ok(())
 }
 
 #[cfg(target_os = "linux")]
 pub fn local_bind_init() -> Result {
+    fs::create_dir_all("/tmp/illa-data");
+
     Ok(())
 }
 
 pub fn local_bind_delete() -> Result {
     fs::remove_dir_all("/tmp/illa-data");
+
     Ok(())
 }
