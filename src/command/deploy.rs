@@ -14,7 +14,7 @@ use std::fmt::format;
 use std::hash::Hash;
 use std::thread;
 use std::time::{Duration, Instant};
-use std::{process, string};
+use std::{env, process, string};
 use uuid::Uuid;
 
 const ILLA_BUILDER_IMAGE: &str = "illasoft/illa-builder";
@@ -185,7 +185,9 @@ async fn deploy_self_host(
             host_ip: Some("0.0.0.0".to_string()),
         }]),
     );
-    utils::local_bind_init();
+    if env::consts::OS == "macos" {
+        utils::local_bind_init();
+    }
     let mounts = vec![Mount {
         target: Some("/var/lib/postgresql/data".to_string()),
         source: Some("/tmp/illa-data".to_string()),
