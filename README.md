@@ -11,7 +11,7 @@
   <p>Create with ❤︎ by <a href="https://github.com/illa-family/illa/graphs/contributors">contributors</a></p>
 </div>
 
-[![Chat on Discord](https://img.shields.io/badge/chat-Discord-7289DA?logo=discord)](https://discord.gg/2tGBuJkgd6)
+[![Chat on Discord](https://img.shields.io/badge/chat-Discord-7289DA?logo=discord)](https://discord.gg/zKf3WKCufR)
 [![Discuss on GitHub](https://img.shields.io/badge/discussions-GitHub-333333?logo=github)](https://github.com/orgs/illa-family/discussions)
 [![License](https://img.shields.io/badge/License-Apache_2.0-blue.svg)](./LICENSE)
 [![contributing](https://badgen.net/badge/PRs/Welcome/green?icon=storybook)](./CONTRIBUTING.md)
@@ -19,13 +19,13 @@
 ## ✨ What is ILLA
 
 ILLA is a CLI tool for **hosting ILLA Builder at cloud or local**.
-<br>We provide a **zero-config developer experience** to save developers' time at deployment. 
+<br>We provide a **zero-config developer experience** to save developers' time at deployment.
 <br>You can deploy a modern low-code platform in 5 Seconds!
 
 ## 🖥 Fast Try
 
 ```bash
-$ cargo install illa
+cargo install illa
 ```
 
 ## 💬 Community
@@ -38,7 +38,7 @@ Join ILLA Community to share your ideas, suggestions or questions and connect wi
 
 <b>Hangout together!</b>
 
-[![Chat on Discord](https://img.shields.io/badge/chat-Discord-7289DA?logo=discord)](https://discord.gg/2tGBuJkgd6)
+[![Chat on Discord](https://img.shields.io/badge/chat-Discord-7289DA?logo=discord)](https://discord.gg/zKf3WKCufR)
 
 ## 🌱 Contributing
 
