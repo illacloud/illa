@@ -16,9 +16,9 @@ pub fn local_bind_init() -> String {
 
 #[cfg(target_os = "windows")]
 pub fn local_bind_init() -> String {
-    fs::create_dir_all("C:/tmp/illa-data");
+    fs::create_dir_all("C:/temp/illa-data");
 
-    String::from("C:/tmp/illa-data")
+    String::from("C:/temp/illa-data")
 }
 
 #[cfg(target_os = "linux")]
