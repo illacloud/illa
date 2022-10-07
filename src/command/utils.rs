@@ -30,7 +30,7 @@ pub fn local_bind_init() -> String {
 
 pub fn local_bind_delete() -> Result {
     if cfg!(windows) {
-        fs::remove_dir_all("C:/tmp/illa-data");
+        fs::remove_dir_all("C:/temp/illa-data");
     } else {
         fs::remove_dir_all("/tmp/illa-data");
     }
