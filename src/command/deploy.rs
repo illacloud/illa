@@ -51,9 +51,9 @@ pub struct Cmd {
         short = 's',
         long = "server-addr",
         default_value = "localhost",
-        value_name = "SERVER_ADDRESS"
+        value_name = "API_SERVER_ADDRESS"
     )]
-    server_address: String,
+    api_server_address: String,
 }
 
 impl Cmd {
@@ -68,7 +68,7 @@ impl Cmd {
                 deploy_self_host(
                     self.builder_version.as_ref(),
                     self.port,
-                    self.server_address.clone(),
+                    self.api_server_address.clone(),
                     spinner_style,
                 )
                 .await?
@@ -148,7 +148,7 @@ async fn deploy_self_host(
     let builder_env = vec![
         "GIN_MODE=release".to_string(),
         format!("POSTGRES_PASSWORD={}", pg_pwd),
-        format!("SERVER_ADDRESS={}", server_addr),
+        format!("API_SERVER_ADDRESS={}", server_addr),
     ];
     let mut builder_labels = HashMap::new();
     builder_labels.insert(
