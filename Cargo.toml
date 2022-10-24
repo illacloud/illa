@@ -1,6 +1,6 @@
 [package]
 name = "illa"
-version = "1.2.3"
+version = "1.2.4"
 authors = ["ILLA <opensource@illasoft.com>"]
 edition = "2021"
 
