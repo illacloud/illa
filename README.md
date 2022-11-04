@@ -1,6 +1,6 @@
 
 <div align="center">
-    <img alt="ILLA Design Logo" width="120px" height="120px" src="https://cdn.illafamily.com/logo.svg"/>
+    <img alt="ILLA Design Logo" width="120px" height="120px" src="https://github.com/illa-family/.github/blob/main/assets/images/ILLALogo.svg"/>
 </div>
 
 <h1 align="center">ILLA</h1>
@@ -11,7 +11,7 @@
   <p>Create with ❤︎ by <a href="https://github.com/illa-family/illa/graphs/contributors">contributors</a></p>
 </div>
 
-[![Chat on Discord](https://img.shields.io/badge/chat-Discord-7289DA?logo=discord)](https://discord.gg/zKf3WKCufR)
+[![Chat on Discord](https://img.shields.io/badge/chat-Discord-7289DA?logo=discord)](https://discord.gg/illafamily)
 [![Discuss on GitHub](https://img.shields.io/badge/discussions-GitHub-333333?logo=github)](https://github.com/orgs/illa-family/discussions)
 [![License](https://img.shields.io/badge/License-Apache_2.0-blue.svg)](./LICENSE)
 [![contributing](https://badgen.net/badge/PRs/Welcome/green?icon=storybook)](./CONTRIBUTING.md)
@@ -38,7 +38,7 @@ Join ILLA Community to share your ideas, suggestions or questions and connect wi
 
 <b>Hangout together!</b>
 
-[![Chat on Discord](https://img.shields.io/badge/chat-Discord-7289DA?logo=discord)](https://discord.gg/zKf3WKCufR)
+[![Chat on Discord](https://img.shields.io/badge/chat-Discord-7289DA?logo=discord)](https://discord.gg/illafamily)
 
 ## 🌱 Contributing
 
