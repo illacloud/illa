@@ -20,7 +20,6 @@ doc = false
 
 [dependencies]
 anyhow = "1.0"
-rand = "0.8"
 bollard = "0.13"
 indicatif = "0.17"
 futures-util = "0.3.23"
