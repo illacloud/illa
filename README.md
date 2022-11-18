@@ -11,7 +11,7 @@
   <p>Create with ❤︎ by <a href="https://github.com/illa-family/illa/graphs/contributors">contributors</a></p>
 </div>
 
-[![Chat on Discord](https://img.shields.io/badge/chat-Discord-7289DA?logo=discord)](https://discord.gg/illafamily)
+[![Chat on Discord](https://img.shields.io/badge/chat-Discord-7289DA?logo=discord)](https://discord.gg/illacloud)
 [![Discuss on GitHub](https://img.shields.io/badge/discussions-GitHub-333333?logo=github)](https://github.com/orgs/illa-family/discussions)
 [![License](https://img.shields.io/badge/License-Apache_2.0-blue.svg)](./LICENSE)
 [![contributing](https://badgen.net/badge/PRs/Welcome/green?icon=storybook)](./CONTRIBUTING.md)
@@ -38,7 +38,7 @@ Join ILLA Community to share your ideas, suggestions or questions and connect wi
 
 <b>Hangout together!</b>
 
-[![Chat on Discord](https://img.shields.io/badge/chat-Discord-7289DA?logo=discord)](https://discord.gg/illafamily)
+[![Chat on Discord](https://img.shields.io/badge/chat-Discord-7289DA?logo=discord)](https://discord.gg/illacloud)
 
 ## 🌱 Contributing
 
@@ -47,7 +47,7 @@ out [Contributing Guide](./CONTRIBUTING.md) for details about how you can get in
 
 ## 📖 Learn more
 
-Please visit [ILLA CLI doc](https://www.illa.cloud/docs/illa-cli)
+Please visit [ILLA CLI doc](https://illacloud.com/docs/illa-cli)
 
 ## 🔥 We're Hiring
 
