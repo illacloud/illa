@@ -11,7 +11,7 @@ use std::process;
 #[clap(group(
     ArgGroup::new("stop")
         .required(true)
-        .args(&["self-host", "cloud"]),
+        .args(&["self_host", "cloud"]),
 ))]
 /// Stop one or more ILLA Builder
 pub struct Cmd {

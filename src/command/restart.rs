@@ -11,7 +11,7 @@ use std::process;
 #[clap(group(
     ArgGroup::new("restart")
         .required(true)
-        .args(&["self-host", "cloud"]),
+        .args(&["self_host", "cloud"]),
 ))]
 /// Restart one or more ILLA Builder
 pub struct Cmd {

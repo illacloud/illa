@@ -16,7 +16,7 @@ use std::process;
 #[clap(group(
     ArgGroup::new("list")
         .required(true)
-        .args(&["all", "self-host", "cloud"]),
+        .args(&["all", "self_host", "cloud"]),
 ))]
 /// List ILLA Builder
 pub struct Cmd {
