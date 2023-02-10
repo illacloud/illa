@@ -148,9 +148,9 @@ async fn deploy_self_host(
     let builder_env = vec![
         "ILLA_SERVER_MODE=release".to_string(),
         "ILLA_DEPLOY_MODE=self-host".to_string(),
-        format!("POSTGRES_PASSWORD={}", pg_pwd),
-        format!("API_SERVER_ADDRESS={}", server_addr),
-        format!("WEBSOCKET_SERVER_ADDRESS={}", server_addr),
+        format!("POSTGRES_PASSWORD={pg_pwd}"),
+        format!("API_SERVER_ADDRESS={server_addr}"),
+        format!("WEBSOCKET_SERVER_ADDRESS={server_addr}"),
     ];
     let mut builder_labels = HashMap::new();
     builder_labels.insert(

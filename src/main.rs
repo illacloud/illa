@@ -30,7 +30,7 @@ enum Cmds {
 async fn main() {
     let cli = Cli::parse();
     if let Err(e) = run(cli).await {
-        eprintln!("error: {:?}", e);
+        eprintln!("error: {e:?}");
         process::exit(1);
     }
 }
