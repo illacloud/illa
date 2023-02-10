@@ -11,7 +11,7 @@ use std::process;
 #[clap(group(
     ArgGroup::new("remove")
         .required(true)
-        .args(&["self-host", "cloud"]),
+        .args(&["self_host", "cloud"]),
 ))]
 /// Remove one or more ILLA Builder
 pub struct Cmd {

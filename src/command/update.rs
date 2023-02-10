@@ -25,7 +25,7 @@ use std::{
 #[clap(group(
     ArgGroup::new("update")
         .required(true)
-        .args(&["self-host", "cloud"]),
+        .args(&["self_host", "cloud"]),
 ))]
 /// Update ILLA Builder
 pub struct Cmd {
@@ -170,7 +170,7 @@ async fn update_local(progress_style: ProgressStyle) -> Result {
         None,
     );
     while let Some(value) = stream_list.next().await {
-        pb_download.set_message(format!("Downloading {}...", builder_image));
+        pb_download.set_message(format!("Downloading {builder_image}..."));
         pb_download.inc(1);
         thread::sleep(Duration::from_millis(100));
         if value.is_err() {
