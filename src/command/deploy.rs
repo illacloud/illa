@@ -26,7 +26,7 @@ const ILLA_BUILDER_VERSION: &str = "latest";
 #[clap(group(
     ArgGroup::new("install")
         .required(true)
-        .args(&["self-host", "cloud"]),
+        .args(&["self_host", "cloud"]),
 ))]
 /// Deploy the ILLA Builder
 pub struct Cmd {

@@ -25,7 +25,7 @@ use std::{
 #[clap(group(
     ArgGroup::new("update")
         .required(true)
-        .args(&["self-host", "cloud"]),
+        .args(&["self_host", "cloud"]),
 ))]
 /// Update ILLA Builder
 pub struct Cmd {
