@@ -54,6 +54,10 @@ pub struct Cmd {
         value_name = "API_SERVER_ADDRESS"
     )]
     api_server_address: String,
+
+    /// The mount path for the ILLA Builder
+    #[clap(short = 'm', long = "mount", value_name = "/TEMP/DIR/ILLA-BUILDER")]
+    mount_path: Option<String>,
 }
 
 impl Cmd {
@@ -69,6 +73,7 @@ impl Cmd {
                     self.builder_version.as_ref(),
                     self.port,
                     self.api_server_address.clone(),
+                    self.mount_path.as_ref(),
                     spinner_style,
                 )
                 .await?
@@ -84,6 +89,7 @@ async fn deploy_self_host(
     version: Option<&String>,
     port: u16,
     server_addr: String,
+    mount_path: Option<&String>,
     progress_style: ProgressStyle,
 ) -> Result {
     println!("{} Running a self-hosted installation...", ui::emoji::BUILD);
@@ -108,6 +114,9 @@ async fn deploy_self_host(
     let default_version = ILLA_BUILDER_VERSION.to_owned();
     let builder_version = version.unwrap_or(&default_version);
     let builder_image = ILLA_BUILDER_IMAGE.to_owned() + ":" + builder_version;
+
+    let default_mount_path = utils::get_default_mount();
+    let mount_path = mount_path.unwrap_or(&default_mount_path);
 
     let download_started = Instant::now();
     let stream_list = &mut _docker.create_image(
@@ -188,7 +197,7 @@ async fn deploy_self_host(
         }]),
     );
 
-    let local_dir = utils::local_bind_init();
+    let local_dir = utils::local_bind_init(mount_path);
     let mounts = vec![Mount {
         target: Some("/var/lib/postgresql/data".to_string()),
         source: Some(local_dir),

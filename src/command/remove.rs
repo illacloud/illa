@@ -1,6 +1,7 @@
 use crate::{command::*, result::Result};
 use anyhow::Ok;
-use bollard::{container::RemoveContainerOptions, Docker};
+use bollard::container::{InspectContainerOptions, RemoveContainerOptions};
+use bollard::Docker;
 use clap::{ArgAction::SetTrue, ArgGroup, Args};
 use console::style;
 use std::process;
@@ -47,10 +48,6 @@ impl Cmd {
 async fn remove_local(is_force: bool, data: bool) -> Result {
     println!("{} Trying to remove the ILLA Builder...", ui::emoji::BUILD);
 
-    if data {
-        utils::local_bind_delete();
-    }
-
     let _docker = Docker::connect_with_local_defaults().unwrap();
     if (_docker.ping().await).is_err() {
         println!(
@@ -62,6 +59,31 @@ async fn remove_local(is_force: bool, data: bool) -> Result {
         );
         process::exit(1);
     }
+
+    if data {
+        let inspect_options = Some(InspectContainerOptions { size: false });
+        let builder_detail = &_docker
+            .inspect_container("illa_builder", inspect_options)
+            .await;
+        if builder_detail.is_err() {
+            println!(
+                "{} {}\n",
+                ui::emoji::FAIL,
+                String::from("No ILLA Builder found."),
+            );
+            process::exit(1);
+        }
+        let builder_info = builder_detail.as_ref().unwrap();
+        let builder_mount_cp = &builder_info
+            .host_config
+            .as_ref()
+            .unwrap()
+            .mounts
+            .clone()
+            .unwrap();
+        utils::local_bind_delete(builder_mount_cp[0].source.clone().unwrap());
+    }
+
     let options = Some(RemoveContainerOptions {
         force: is_force,
         ..Default::default()

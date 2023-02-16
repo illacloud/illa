@@ -103,10 +103,16 @@ async fn update_local(progress_style: ProgressStyle) -> Result {
         builder_env_cp[3].as_str(),
         builder_env_cp[4].as_str(),
     ];
-    let local_dir = utils::local_bind_init();
+    let builder_mount_cp = &builder_info
+        .host_config
+        .as_ref()
+        .unwrap()
+        .mounts
+        .clone()
+        .unwrap();
     let mounts = vec![Mount {
         target: Some("/var/lib/postgresql/data".to_string()),
-        source: Some(local_dir),
+        source: Some(builder_mount_cp[0].source.clone().unwrap()),
         typ: Some(MountTypeEnum::BIND),
         read_only: Some(false),
         ..Default::default()
