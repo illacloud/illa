@@ -100,8 +100,6 @@ async fn update_local(progress_style: ProgressStyle) -> Result {
         builder_env_cp[0].as_str(),
         builder_env_cp[1].as_str(),
         builder_env_cp[2].as_str(),
-        builder_env_cp[3].as_str(),
-        builder_env_cp[4].as_str(),
     ];
     let builder_mount_cp = &builder_info
         .host_config

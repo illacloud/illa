@@ -46,15 +46,6 @@ pub struct Cmd {
     #[clap(short = 'p', long = "port", default_value = "80")]
     port: u16,
 
-    /// The server address where you want to deploy
-    #[clap(
-        short = 's',
-        long = "server-addr",
-        default_value = "localhost",
-        value_name = "API_SERVER_ADDRESS"
-    )]
-    api_server_address: String,
-
     /// The mount path for the ILLA Builder
     #[clap(short = 'm', long = "mount", value_name = "/TEMP/DIR/ILLA-BUILDER")]
     mount_path: Option<String>,
@@ -72,7 +63,6 @@ impl Cmd {
                 deploy_self_host(
                     self.builder_version.as_ref(),
                     self.port,
-                    self.api_server_address.clone(),
                     self.mount_path.as_ref(),
                     spinner_style,
                 )
@@ -88,7 +78,6 @@ impl Cmd {
 async fn deploy_self_host(
     version: Option<&String>,
     port: u16,
-    server_addr: String,
     mount_path: Option<&String>,
     progress_style: ProgressStyle,
 ) -> Result {
@@ -158,8 +147,6 @@ async fn deploy_self_host(
         "ILLA_SERVER_MODE=release".to_string(),
         "ILLA_DEPLOY_MODE=self-host".to_string(),
         format!("POSTGRES_PASSWORD={pg_pwd}"),
-        format!("API_SERVER_ADDRESS={server_addr}"),
-        format!("WEBSOCKET_SERVER_ADDRESS={server_addr}"),
     ];
     let mut builder_labels = HashMap::new();
     builder_labels.insert(
@@ -172,27 +159,6 @@ async fn deploy_self_host(
         "80/tcp".to_string(),
         Some(vec![PortBinding {
             host_port: Some(port.to_string()),
-            host_ip: Some("0.0.0.0".to_string()),
-        }]),
-    );
-    builder_port_bindings.insert(
-        "5432/tcp".to_string(),
-        Some(vec![PortBinding {
-            host_port: Some("5432".to_string()),
-            host_ip: Some("0.0.0.0".to_string()),
-        }]),
-    );
-    builder_port_bindings.insert(
-        "8000/tcp".to_string(),
-        Some(vec![PortBinding {
-            host_port: Some("8000".to_string()),
-            host_ip: Some("0.0.0.0".to_string()),
-        }]),
-    );
-    builder_port_bindings.insert(
-        "9999/tcp".to_string(),
-        Some(vec![PortBinding {
-            host_port: Some("9999".to_string()),
             host_ip: Some("0.0.0.0".to_string()),
         }]),
     );
