@@ -1,5 +1,6 @@
 use crate::{command::*, result::Result};
 use anyhow::Ok;
+use dirs;
 use std::{env, fs};
 
 #[cfg(target_os = "macos")]
@@ -35,8 +36,8 @@ pub fn local_bind_delete(path: String) -> Result {
 }
 
 pub fn get_default_mount() -> String {
-    let tmp_dir = env::temp_dir();
-    let temp_dir = tmp_dir.join("illa-builder");
+    let tmp_dir = dirs::home_dir().unwrap();
+    let temp_dir = tmp_dir.join(".illa-builder");
 
     temp_dir.display().to_string()
 }
