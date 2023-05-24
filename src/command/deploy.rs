@@ -165,7 +165,7 @@ async fn deploy_self_host(
 
     let local_dir = utils::local_bind_init(mount_path);
     let mounts = vec![Mount {
-        target: Some("/var/lib/postgresql/data".to_string()),
+        target: Some("/opt/illa/database".to_string()),
         source: Some(local_dir),
         typ: Some(MountTypeEnum::BIND),
         read_only: Some(false),
