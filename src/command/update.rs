@@ -127,7 +127,7 @@ async fn update_local(progress_style: ProgressStyle) -> Result {
     let port = builder_port_bindings
         .clone()
         .unwrap()
-        .get("80/tcp")
+        .get("2022/tcp")
         .unwrap()
         .clone();
     pb_setup.set_style(finish_spinner_style.clone());

@@ -156,7 +156,7 @@ async fn deploy_self_host(
     builder_labels.insert("license".to_string(), "Apache-2.0".to_string());
     let mut builder_port_bindings = HashMap::new();
     builder_port_bindings.insert(
-        "80/tcp".to_string(),
+        "2022/tcp".to_string(),
         Some(vec![PortBinding {
             host_port: Some(port.to_string()),
             host_ip: Some("0.0.0.0".to_string()),
