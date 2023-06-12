@@ -109,7 +109,7 @@ async fn update_local(progress_style: ProgressStyle) -> Result {
         .clone()
         .unwrap();
     let mounts = vec![Mount {
-        target: Some("/var/lib/postgresql/data".to_string()),
+        target: Some("/opt/illa/database".to_string()),
         source: Some(builder_mount_cp[0].source.clone().unwrap()),
         typ: Some(MountTypeEnum::BIND),
         read_only: Some(false),
