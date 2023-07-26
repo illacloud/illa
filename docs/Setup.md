@@ -2,7 +2,7 @@
 
 This document explains how you can setup a development environment for `illa` cli.
 
-## Pre-requisite
+## Pre-requisites
 
 - [Rust](https://www.rust-lang.org/tools/install)
 - [Docker](https://docs.docker.com/get-docker/)
