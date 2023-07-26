@@ -4,7 +4,7 @@ We encourage you to ask for help whenever you think it's needed! We are happy ab
 
 ## Filing issues
 
-Whether you are trying to report a bug or propose a feature request, [Github issues](https://github.com/illa-family/illa/issues) is for you!
+Whether you are trying to report a bug or propose a feature request, [Github issues](https://github.com/illacloud/illa/issues) is for you!
 
 The `bug report` and `feature request` issue templates are ready for you!
 

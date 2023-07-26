@@ -8,12 +8,12 @@
 <p align="center">Accelerate your internal tools development.</p>
 
 <div align="center">
-  <p>Create with ❤︎ by <a href="https://github.com/illa-family/illa/graphs/contributors">contributors</a></p>
+  <p>Create with ❤︎ by <a href="https://github.com/illacloud/illa/graphs/contributors">contributors</a></p>
 </div>
 
 [![Chat on Discord](https://img.shields.io/badge/chat-Discord-7289DA?logo=discord)](https://discord.gg/illacloud)
 [![Follow on Twitter](https://img.shields.io/badge/Twitter-1DA1F2?logo=twitter&logoColor=white)](https://twitter.com/illacloudHQ)
-[![Discuss on GitHub](https://img.shields.io/badge/discussions-GitHub-333333?logo=github)](https://github.com/orgs/illa-family/discussions)
+[![Discuss on GitHub](https://img.shields.io/badge/discussions-GitHub-333333?logo=github)](https://github.com/orgs/illacloud/discussions)
 [![License](https://img.shields.io/badge/License-Apache_2.0-blue.svg)](./LICENSE)
 [![contributing](https://badgen.net/badge/PRs/Welcome/green?icon=storybook)](./CONTRIBUTING.md)
 
@@ -35,7 +35,7 @@ Join ILLA Community to share your ideas, suggestions or questions and connect wi
 
 <b>Discussion</b>
 
-[![Discuss on GitHub](https://img.shields.io/badge/discussions-GitHub-333333?logo=github)](https://github.com/orgs/illa-family/discussions)
+[![Discuss on GitHub](https://img.shields.io/badge/discussions-GitHub-333333?logo=github)](https://github.com/orgs/illacloud/discussions)
 
 <b>Hangout together!</b>
 
