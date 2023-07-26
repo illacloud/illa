@@ -21,8 +21,8 @@ We welcome all feature requests, whether to add new functionality to `ILLA` or t
 
 ### ⚙️ Close a Bug / Feature issue
 
-We welcome contributions that help make `ILLA` cli bug free & improve the experience of our users. You can also find issues tagged `bug` or `enhancement`. Check out our [Code Contribution Guide](docs/CodeContributionsGuidelines.md) to begin.
+We welcome contributions that help make `ILLA` cli bug free & improve the experience of our users. You can also find issues tagged `bug` or `enhancement`. Check out our [Code Contribution Guide](docs/Code_Contributions_Guidelines.md) to begin.
 
 ## Read more
 
-- [How to file an issue to ILLA and what will happen](./ISSUES.md)
+- [How to file an issue to ILLA and what will happen](ISSUES.md)
