@@ -35,6 +35,19 @@ impl Cmd {
         let new_spinner_style = ProgressStyle::with_template("{wide_msg}").unwrap();
         pb.set_style(new_spinner_style);
         let _docker = Docker::connect_with_local_defaults().unwrap();
+        let error_info = |pb: ProgressBar| {
+            pb.println(format!(
+                "{} {}\n{} {}\n\n{}\n\n{}\n\n{}\n",
+                ui::emoji::FAIL,
+                String::from("No running docker found."),
+                ui::emoji::WARN,
+                style("Please check the status of docker with command: docker info").red(),
+                String::from("If you do not have Docker installed, please refer to the following content for instructions on how to install it: "),
+                style("https://docs.docker.com/engine/install/").blue(),
+                String::from("Once Docker is installed, please try running the command again."),
+            ));
+            pb.finish_with_message(format!("illa doctor exited."));
+        };
         match _docker.version().await {
             Ok(version) =>  pb.finish_with_message(format!(
                 "{} {}: {}\n{} {}",
@@ -44,13 +57,7 @@ impl Cmd {
                 ui::emoji::SPARKLE,
                 style("Success! The minimum requirement for deploying ILLA has been satisfied. Self-Host your ILLA Builder by command [illa deploy].").green(),
             )),
-            Err(e) => pb.finish_with_message(format!(
-                "{} {}\n{} {}",
-                ui::emoji::FAIL,
-                String::from("No running docker found."),
-                ui::emoji::WARN,
-                style("Please check the status of docker.").red(),
-            ))
+            Err(e) => error_info(pb),
         }
         println!();
         Ok(())
