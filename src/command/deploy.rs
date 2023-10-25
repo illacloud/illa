@@ -86,11 +86,14 @@ async fn deploy_self_host(
     let _docker = Docker::connect_with_local_defaults().unwrap();
     if (_docker.ping().await).is_err() {
         println!(
-            "{} {}\n{} {}",
+            "{} {}\n{} {}\n\n{}\n\n{}\n\n{}\n",
             ui::emoji::FAIL,
             String::from("No running docker found."),
             ui::emoji::WARN,
-            style("Please check the status of docker.").red(),
+            style("Please check the status of docker with command: docker info").red(),
+            String::from("If you do not have Docker installed, please refer to the following content for instructions on how to install it: "),
+            style("https://docs.docker.com/engine/install/").blue(),
+            String::from("Once Docker is installed, please try running the command again."),
         );
         process::exit(1);
     }
